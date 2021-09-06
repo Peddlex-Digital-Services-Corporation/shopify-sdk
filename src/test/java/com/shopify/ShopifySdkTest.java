@@ -2389,7 +2389,7 @@ public class ShopifySdkTest {
 		final String someCustomerId = "some-id";
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
 				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers")
-				.append(FORWARD_SLASH).append(someCustomerId).toString();
+				.append(FORWARD_SLASH).append(someCustomerId).append(".json").toString();
 		final ShopifyCustomerUpdateRequest shopifyCustomerUpdateRequest = ShopifyCustomerUpdateRequest.newBuilder()
 				.withId(someCustomerId).withFirstName("Ryan").withLastName("Kazokas")
 				.withEmail("rkazokas@channelape.com").withPhone("57087482349").build();
@@ -2436,7 +2436,7 @@ public class ShopifySdkTest {
 		final ShopifyCustomer shopifyCustomer = buildShopifyCustomer();
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
 				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers")
-				.append(FORWARD_SLASH).append(shopifyCustomer.getId()).toString();
+				.append(FORWARD_SLASH).append(shopifyCustomer.getId()).append(".json").toString();
 		final ShopifyCustomerRoot shopifyCustomerRoot = new ShopifyCustomerRoot();
 		shopifyCustomerRoot.setCustomer(shopifyCustomer);
 
@@ -2457,7 +2457,7 @@ public class ShopifySdkTest {
 	public void givenAValidRequestWhenRetrievingAListOfCustomersWithPaginationParamsThenRetrieveThoseCustomers()
 			throws JsonProcessingException {
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers").toString();
+				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers.json").toString();
 		final ShopifyCustomer shopifyCustomer = buildShopifyCustomer();
 		final List<ShopifyCustomer> shopifyCustomers = new LinkedList<>();
 		shopifyCustomers.add(shopifyCustomer);
@@ -2483,7 +2483,7 @@ public class ShopifySdkTest {
 	public void givenAListOfIdsWhenRetrievingCustomersThenRetrieveJustThoseCustomers() throws JsonProcessingException {
 		final String someOtherCustomerId = "some-other-id";
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers").toString();
+				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers.json").toString();
 		final ShopifyCustomer shopifyCustomer = buildShopifyCustomer();
 		final List<ShopifyCustomer> shopifyCustomers = new LinkedList<>();
 		final List<String> ids = new ArrayList<>();
@@ -2515,7 +2515,7 @@ public class ShopifySdkTest {
 	public void givenASinceIdWhenRetrievingCustomersThenRetrieveJustThoseCustomers() throws JsonProcessingException {
 		final String sinceId = "since-id";
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers").toString();
+				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers.json").toString();
 		final ShopifyCustomer shopifyCustomer = buildShopifyCustomer();
 		final List<ShopifyCustomer> shopifyCustomers = new LinkedList<>();
 		shopifyCustomers.add(shopifyCustomer);
@@ -2544,7 +2544,7 @@ public class ShopifySdkTest {
 	public void givenMinimumCreationDateAndPaginationParamsWhenRetrievingCustomersThenRetrieveJustThoseCustomers()
 			throws JsonProcessingException {
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers").toString();
+				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers.json").toString();
 		final ShopifyCustomer shopifyCustomer = buildShopifyCustomer();
 		final List<ShopifyCustomer> shopifyCustomers = new LinkedList<>();
 		shopifyCustomers.add(shopifyCustomer);
@@ -2575,7 +2575,7 @@ public class ShopifySdkTest {
 	public void givenAMinimumAndMaximumCreationDateAndPageParamWhenRetrievingCustomersThenRetrieveJustThoseCustomers()
 			throws JsonProcessingException {
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
-				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers").toString();
+				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers.json").toString();
 		final ShopifyCustomer shopifyCustomer = buildShopifyCustomer();
 		final List<ShopifyCustomer> shopifyCustomers = new LinkedList<>();
 		shopifyCustomers.add(shopifyCustomer);
@@ -2609,7 +2609,7 @@ public class ShopifySdkTest {
 			throws JsonProcessingException {
 		final String expectedPath = new StringBuilder().append(FORWARD_SLASH).append(ShopifySdk.API_VERSION_PREFIX)
 				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers")
-				.append(FORWARD_SLASH).append("search").toString();
+				.append(FORWARD_SLASH).append("search.json").toString();
 		final ShopifyCustomer shopifyCustomer = buildShopifyCustomer();
 		final List<ShopifyCustomer> shopifyCustomers = new LinkedList<>();
 		shopifyCustomers.add(shopifyCustomer);

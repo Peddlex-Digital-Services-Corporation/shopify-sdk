@@ -731,20 +731,26 @@ public class ShopifySdk {
 	public ShopifyCustomer updateCustomer(final ShopifyCustomerUpdateRequest shopifyCustomerUpdateRequest) {
 		final ShopifyCustomerUpdateRoot shopifyCustomerUpdateRequestRoot = new ShopifyCustomerUpdateRoot();
 		shopifyCustomerUpdateRequestRoot.setCustomer(shopifyCustomerUpdateRequest);
-		final Response response = put(getWebTarget().path(CUSTOMERS).path(shopifyCustomerUpdateRequest.getId()),
+		final Response response = put(getWebTarget().path(CUSTOMERS).path(shopifyCustomerUpdateRequest.getId() + JSON),
 				shopifyCustomerUpdateRequestRoot);
 		final ShopifyCustomerRoot shopifyCustomerRootResponse = response.readEntity(ShopifyCustomerRoot.class);
 		return shopifyCustomerRootResponse.getCustomer();
 	}
 
 	public ShopifyCustomer getCustomer(final String customerId) {
-		final Response response = get(getWebTarget().path(CUSTOMERS).path(customerId));
+		final Response response = get(getWebTarget().path(CUSTOMERS).path(customerId + JSON));
 		final ShopifyCustomerRoot shopifyCustomerRootResponse = response.readEntity(ShopifyCustomerRoot.class);
 		return shopifyCustomerRootResponse.getCustomer();
 	}
 
+	public List<ShopifyOrder> getCustomerOrders(final String customerId) {
+		final Response response = get(getWebTarget().path(CUSTOMERS).path(customerId).path(ORDERS + JSON));
+		final ShopifyOrdersRoot shopifyOrderRootResponse = response.readEntity(ShopifyOrdersRoot.class);
+		return shopifyOrderRootResponse.getOrders();
+	}
+
 	public ShopifyPage<ShopifyCustomer> getCustomers(final ShopifyGetCustomersRequest shopifyGetCustomersRequest) {
-		WebTarget target = getWebTarget().path(CUSTOMERS);
+		WebTarget target = getWebTarget().path(CUSTOMERS + JSON);
 		if (shopifyGetCustomersRequest.getPageInfo() != null) {
 			target = target.queryParam(PAGE_INFO_QUERY_PARAMETER, shopifyGetCustomersRequest.getPageInfo());
 		}
@@ -770,7 +776,7 @@ public class ShopifySdk {
 	}
 
 	public ShopifyPage<ShopifyCustomer> searchCustomers(final String query) {
-		final Response response = get(getWebTarget().path(CUSTOMERS).path(SEARCH)
+		final Response response = get(getWebTarget().path(CUSTOMERS).path(SEARCH + JSON)
 				.queryParam(QUERY_QUERY_PARAMETER, query).queryParam(LIMIT_QUERY_PARAMETER, DEFAULT_REQUEST_LIMIT));
 		return getCustomers(response);
 	}
