@@ -2,6 +2,7 @@ package com.shopify.exceptions;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -42,5 +43,15 @@ public class ShopifyErrorCodeFactory {
 		}
 		return shopifyErrorCodes;
 	}
+
+    public static final ShopifyError parse(final String responseBody) {
+        try {
+            final ObjectMapper objectMapper = ShopifySdkObjectMapper.buildMapper();
+            return objectMapper.readValue(responseBody, ShopifyError.class);
+        } catch (final Exception e) {
+            LOGGER.warn(COULD_NOT_PARSE_ERROR_RESPONSE_MESSAGE, responseBody, e);
+            return new ShopifyError();
+        }
+    }
 
 }

@@ -1,6 +1,8 @@
 package com.shopify.exceptions;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.core.Response;
 
@@ -13,11 +15,13 @@ public class ShopifyErrorResponseException extends RuntimeException {
 	private static final long serialVersionUID = 5646635633348617058L;
 	private final String responseBody;
 	private final List<ShopifyErrorCode> shopifyErrorCodes;
+	private final ShopifyError errors;
 
 	public ShopifyErrorResponseException(final Response response) {
 		super(buildMessage(response));
 		this.responseBody = ResponseEntityToStringMapper.map(response);
-		this.shopifyErrorCodes = ShopifyErrorCodeFactory.create(responseBody);
+		this.shopifyErrorCodes = Collections.emptyList();
+		this.errors = ShopifyErrorCodeFactory.parse(responseBody);
 		this.statusCode = response.getStatus();
 	}
 
@@ -38,4 +42,7 @@ public class ShopifyErrorResponseException extends RuntimeException {
 		return shopifyErrorCodes;
 	}
 
+	public ShopifyError getErrors() {
+		return errors;
+	}
 }
