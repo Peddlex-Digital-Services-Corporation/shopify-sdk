@@ -10,6 +10,7 @@ public class ShopifyCustomerUpdateRequestTest {
 	public void givenSomeValuesWhenShopifyCustomerUpdateRequestThenExpectCorrectValues() {
 
 		final ShopifyCustomerUpdateRequest shopifyCustomerUpdateRequest = ShopifyCustomerUpdateRequest.newBuilder()
+				.withNote( "")
 				.withId("some-id").withFirstName("Ryan").withLastName("Kazokas").withEmail("rkazokas@channelape.com")
 				.withPhone("209378429734").build();
 

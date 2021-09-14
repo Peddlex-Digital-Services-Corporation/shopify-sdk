@@ -2391,6 +2391,7 @@ public class ShopifySdkTest {
 				.append(FORWARD_SLASH).append(SOME_API_VERSION).append(FORWARD_SLASH).append("customers")
 				.append(FORWARD_SLASH).append(someCustomerId).append(".json").toString();
 		final ShopifyCustomerUpdateRequest shopifyCustomerUpdateRequest = ShopifyCustomerUpdateRequest.newBuilder()
+				.withNote("")
 				.withId(someCustomerId).withFirstName("Ryan").withLastName("Kazokas")
 				.withEmail("rkazokas@channelape.com").withPhone("57087482349").build();
 		final ShopifyCustomerRoot shopifyCustomerRoot = new ShopifyCustomerRoot();

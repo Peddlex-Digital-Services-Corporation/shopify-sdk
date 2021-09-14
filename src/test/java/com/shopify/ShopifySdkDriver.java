@@ -719,6 +719,7 @@ public class ShopifySdkDriver {
 			throws JsonProcessingException {
 
 		final ShopifyCustomerUpdateRequest shopifyOrderUpdateRequest = ShopifyCustomerUpdateRequest.newBuilder()
+				.withNote("")
 				.withId("6780238412").withFirstName("RyanTest").withLastName("Kazokas123")
 				.withEmail("rkazokas@channelape.com").withPhone("5702392904").build();
 

@@ -20,6 +20,7 @@ public class ShopifyCustomerUpdateRequest {
 	@XmlElement(name = "last_name")
 	private String lastname;
 	private String phone;
+	private String note;
 
 	private ShopifyCustomerUpdateRequest(final Steps steps) {
 		this.id = steps.id;
@@ -53,16 +54,21 @@ public class ShopifyCustomerUpdateRequest {
 		FirstNameStep withId(final String id);
 	}
 
-	public static IdStep newBuilder() {
+	public static interface NoteStep {
+		IdStep withNote(String note);
+	}
+
+	public static NoteStep newBuilder() {
 		return new Steps();
 	}
 
-	private static class Steps implements IdStep, FirstNameStep, LastNameStep, EmailStep, PhoneStep, BuildStep {
+	private static class Steps implements NoteStep, IdStep, FirstNameStep, LastNameStep, EmailStep, PhoneStep, BuildStep {
 		private String id;
 		private String email;
 		private String firstName;
 		private String lastname;
 		private String phone;
+		private String note;
 
 		@Override
 		public ShopifyCustomerUpdateRequest build() {
@@ -96,6 +102,12 @@ public class ShopifyCustomerUpdateRequest {
 		@Override
 		public FirstNameStep withId(final String id) {
 			this.id = id;
+			return this;
+		}
+
+		@Override
+		public IdStep withNote(String note) {
+			this.note = note;
 			return this;
 		}
 	}
