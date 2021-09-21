@@ -78,6 +78,7 @@ public class ShopifyCustomer {
 	private String facebookUrl;
 	private String twitterHandle;
 	private String tiktokHandle;
+	private String discordUrl;
 	private String company;
 	private String ethWalletAddress1;
 	private String ethWalletAddress2;
@@ -304,6 +305,14 @@ public class ShopifyCustomer {
 
 	public void setTiktokHandle(String tiktokHandle) {
 		this.tiktokHandle = tiktokHandle;
+	}
+
+	public String getDiscordUrl() {
+		return discordUrl;
+	}
+
+	public void setDiscordUrl(String discordUrl) {
+		this.discordUrl = discordUrl;
 	}
 
 	public String getCompany() {
