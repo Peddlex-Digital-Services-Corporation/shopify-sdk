@@ -1,15 +1,22 @@
 package com.shopify.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@JsonIgnoreProperties( ignoreUnknown = true )
 public class ShopifyTaxLine {
 
 	private String title;
 	private BigDecimal price;
 	private BigDecimal rate;
+
+	@JsonProperty( "price_set" )
+	private PriceSet priceSet;
 
 	public String getTitle() {
 		return title;
@@ -35,4 +42,11 @@ public class ShopifyTaxLine {
 		this.rate = rate;
 	}
 
+	public PriceSet getPriceSet() {
+		return priceSet;
+	}
+
+	public void setPriceSet(PriceSet priceSet) {
+		this.priceSet = priceSet;
+	}
 }

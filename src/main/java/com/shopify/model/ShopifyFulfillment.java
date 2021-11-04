@@ -3,18 +3,10 @@ package com.shopify.model;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.joda.time.DateTime;
-
-import com.shopify.model.adapters.DateTimeAdapter;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ShopifyFulfillment {
 
 	public enum Status {
@@ -54,28 +46,26 @@ public class ShopifyFulfillment {
 	}
 
 	private String id;
-	@XmlElement(name = "order_id")
+	@JsonProperty("order_id")
 	private String orderId;
 	private String status;
-	@XmlElement(name = "created_at")
-	@XmlJavaTypeAdapter(DateTimeAdapter.class)
-	private DateTime createdAt;
-	@XmlElement(name = "updated_at")
-	@XmlJavaTypeAdapter(DateTimeAdapter.class)
-	private DateTime updatedAt;
-	@XmlElement(name = "tracking_company")
+	@JsonProperty("created_at")
+	private Object createdAt;
+	@JsonProperty("updated_at")
+	private Object updatedAt;
+	@JsonProperty("tracking_company")
 	private String trackingCompany;
-	@XmlElement(name = "tracking_number")
+	@JsonProperty("tracking_number")
 	private String trackingNumber;
-	@XmlElement(name = "notify_customer")
+	@JsonProperty("notify_customer")
 	private boolean notifyCustomer;
-	@XmlElement(name = "line_items")
+	@JsonProperty("line_items")
 	private List<ShopifyLineItem> lineItems = new LinkedList<>();
-	@XmlElement(name = "tracking_url")
+	@JsonProperty("tracking_url")
 	private String trackingUrl;
-	@XmlElement(name = "tracking_urls")
+	@JsonProperty("tracking_urls")
 	private List<String> trackingUrls = new LinkedList<>();
-	@XmlElement(name = "location_id")
+	@JsonProperty("location_id")
 	private String locationId;
 
 	public String getId() {
@@ -102,19 +92,19 @@ public class ShopifyFulfillment {
 		this.status = status;
 	}
 
-	public DateTime getCreatedAt() {
+	public Object getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(final DateTime createdAt) {
+	public void setCreatedAt(Object createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public DateTime getUpdatedAt() {
+	public Object getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(final DateTime updatedAt) {
+	public void setUpdatedAt(Object updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

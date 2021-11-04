@@ -1,11 +1,15 @@
 package com.shopify.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlRootElement
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ShopifyAttribute {
 
+	@JsonProperty
 	private String name;
+
+	@JsonProperty
 	private String value;
 
 	public String getName() {
