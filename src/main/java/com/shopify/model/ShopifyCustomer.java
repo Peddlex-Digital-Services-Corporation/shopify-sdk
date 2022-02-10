@@ -90,6 +90,16 @@ public class ShopifyCustomer {
 	private String bscWalletAddress2;
 	private String cardanoWalletAddress1;
 	private String cardanoWalletAddress2;
+	private String flowWalletAddress1;
+	private String flowWalletAddress2;
+	private String tronWalletAddress1;
+	private String tronWalletAddress2;
+	private String algorandWalletAddress1;
+	private String algorandWalletAddress2;
+	private String eosWalletAddress1;
+	private String eosWalletAddress2;
+	private String solanaWalletAddress1;
+	private String solanaWalletAddress2;
 
 	public String getId() {
 		return id;
@@ -401,5 +411,85 @@ public class ShopifyCustomer {
 
 	public void setCardanoWalletAddress2(String cardanoWalletAddress2) {
 		this.cardanoWalletAddress2 = cardanoWalletAddress2;
+	}
+
+	public String getFlowWalletAddress1() {
+		return flowWalletAddress1;
+	}
+
+	public void setFlowWalletAddress1(String flowWalletAddress1) {
+		this.flowWalletAddress1 = flowWalletAddress1;
+	}
+
+	public String getFlowWalletAddress2() {
+		return flowWalletAddress2;
+	}
+
+	public void setFlowWalletAddress2(String flowWalletAddress2) {
+		this.flowWalletAddress2 = flowWalletAddress2;
+	}
+
+	public String getTronWalletAddress1() {
+		return tronWalletAddress1;
+	}
+
+	public void setTronWalletAddress1(String tronWalletAddress1) {
+		this.tronWalletAddress1 = tronWalletAddress1;
+	}
+
+	public String getTronWalletAddress2() {
+		return tronWalletAddress2;
+	}
+
+	public void setTronWalletAddress2(String tronWalletAddress2) {
+		this.tronWalletAddress2 = tronWalletAddress2;
+	}
+
+	public String getAlgorandWalletAddress1() {
+		return algorandWalletAddress1;
+	}
+
+	public void setAlgorandWalletAddress1(String algorandWalletAddress1) {
+		this.algorandWalletAddress1 = algorandWalletAddress1;
+	}
+
+	public String getAlgorandWalletAddress2() {
+		return algorandWalletAddress2;
+	}
+
+	public void setAlgorandWalletAddress2(String algorandWalletAddress2) {
+		this.algorandWalletAddress2 = algorandWalletAddress2;
+	}
+
+	public String getEosWalletAddress1() {
+		return eosWalletAddress1;
+	}
+
+	public void setEosWalletAddress1(String eosWalletAddress1) {
+		this.eosWalletAddress1 = eosWalletAddress1;
+	}
+
+	public String getEosWalletAddress2() {
+		return eosWalletAddress2;
+	}
+
+	public void setEosWalletAddress2(String eosWalletAddress2) {
+		this.eosWalletAddress2 = eosWalletAddress2;
+	}
+
+	public String getSolanaWalletAddress1() {
+		return solanaWalletAddress1;
+	}
+
+	public void setSolanaWalletAddress1(String solanaWalletAddress1) {
+		this.solanaWalletAddress1 = solanaWalletAddress1;
+	}
+
+	public String getSolanaWalletAddress2() {
+		return solanaWalletAddress2;
+	}
+
+	public void setSolanaWalletAddress2(String solanaWalletAddress2) {
+		this.solanaWalletAddress2 = solanaWalletAddress2;
 	}
 }
