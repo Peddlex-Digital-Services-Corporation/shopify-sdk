@@ -1,8 +1,14 @@
 package com.shopify.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum InventoryPolicy {
 
-	DENY("deny"), CONTINUE("continue");
+	@JsonProperty("deny")
+	DENY("deny"),
+
+	@JsonProperty("continue")
+	CONTINUE("continue");
 
 	static final String NO_MATCHING_ENUMS_ERROR_MESSAGE = "No matching enum found for %s";
 	private final String value;

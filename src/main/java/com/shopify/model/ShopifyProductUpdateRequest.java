@@ -250,10 +250,12 @@ public class ShopifyProductUpdateRequest implements ShopifyProductRequest {
 
 		@Override
 		public SortedOptionNamesStep withTags(final Set<String> tags) {
-			if (doesNotEqual(tags, shopifyProduct.getTags())) {
-				shopifyProduct.setTags(tags);
-				changed = true;
-			}
+//			if (doesNotEqual(tags, shopifyProduct.getTags())) {
+//				shopifyProduct.setTags(tags);
+//				changed = true;
+//			}
+			shopifyProduct.setTags(String.join(",", tags));
+			changed = true;
 			return this;
 		}
 

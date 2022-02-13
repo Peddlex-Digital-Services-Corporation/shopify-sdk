@@ -6,32 +6,36 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.joda.time.DateTime;
 
 import com.shopify.model.adapters.DateTimeAdapter;
 import com.shopify.model.adapters.MetafieldValueTypeAdapter;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Metafield {
 
 	private String id;
 	private String key;
 	private String value;
-	@XmlElement(name = "value_type")
-	@XmlJavaTypeAdapter(MetafieldValueTypeAdapter.class)
+
+	@JsonProperty("value_type")
 	private MetafieldValueType valueType;
+
 	private String namespace;
-	@XmlElement(name = "owner_id")
+
+	@JsonProperty("owner_id")
 	private String ownerId;
-	@XmlElement(name = "owner_resource")
+
+	@JsonProperty("owner_resource")
 	private String ownerResource;
-	@XmlElement(name = "created_at")
-	@XmlJavaTypeAdapter(DateTimeAdapter.class)
-	private DateTime createdAt;
-	@XmlElement(name = "updated_at")
-	@XmlJavaTypeAdapter(DateTimeAdapter.class)
-	private DateTime updatedAt;
+
+	@JsonProperty("created_at")
+	private Object createdAt;
+
+	@JsonProperty("updated_at")
+	private Object updatedAt;
 
 	public String getId() {
 		return id;
@@ -89,19 +93,19 @@ public class Metafield {
 		this.ownerResource = ownerResource;
 	}
 
-	public DateTime getCreatedAt() {
+	public Object getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(DateTime createdAt) {
+	public void setCreatedAt(Object createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public DateTime getUpdatedAt() {
+	public Object getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(DateTime updatedAt) {
+	public void setUpdatedAt(Object updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

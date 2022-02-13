@@ -170,7 +170,7 @@ public class ShopifyProductCreationRequest implements ShopifyProductRequest {
 
 		@Override
 		public SortedOptionNamesStep withTags(final Set<String> tags) {
-			shopifyProduct.setTags(tags);
+			shopifyProduct.setTags(String.join(",", tags));
 			return this;
 		}
 

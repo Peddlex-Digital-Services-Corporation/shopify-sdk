@@ -9,22 +9,28 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.shopify.model.adapters.EscapedStringAdapter;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Image {
 
 	private String id;
-	@XmlElement(name = "product_id")
+
+	@JsonProperty("product_id")
 	private String productId;
-	@XmlJavaTypeAdapter(EscapedStringAdapter.class)
+
 	private String name;
+
 	private int position;
-	@XmlElement(name = "src")
+
+	@JsonProperty("src")
 	private String source;
-	@XmlElement(name = "variant_ids")
+
+	@JsonProperty("variant_ids")
 	private List<String> variantIds = new LinkedList<>();
+
 	private List<Metafield> metafields = new LinkedList<>();
 
 	public String getId() {
