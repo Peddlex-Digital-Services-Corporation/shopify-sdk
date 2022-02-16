@@ -1,5 +1,7 @@
 package com.shopify.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.shopify.model.adapters.DateTimeAdapter;
 import org.joda.time.DateTime;
 
@@ -9,8 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ShopifyCustomCollection {
 
 	private String id;
@@ -18,27 +19,25 @@ public class ShopifyCustomCollection {
 	private String handle;
 	private boolean published;
 
-	@XmlElement(name = "body_html")
+	@JsonProperty("body_html")
 	private String bodyHtml;
 
-	@XmlElement(name = "published_scope")
+	@JsonProperty("published_scope")
 	private String publishedScope;
 
-	@XmlElement(name = "sort_order")
+	@JsonProperty("sort_order")
 	private String sortOrder;
 
-	@XmlElement(name = "template_suffix")
+	@JsonProperty("template_suffix")
 	private String templateSuffix;
 
-	@XmlElement(name = "published_at")
-	@XmlJavaTypeAdapter(DateTimeAdapter.class)
-	private DateTime publishedAt;
+	@JsonProperty("published_at")
+	private Object publishedAt;
 
-	@XmlElement(name = "updated_at")
-	@XmlJavaTypeAdapter(DateTimeAdapter.class)
-	private DateTime updatedAt;
+	@JsonProperty("updated_at")
+	private Object updatedAt;
 
-	@XmlElement(name = "admin_graphql_api_id")
+	@JsonProperty("admin_graphql_api_id")
 	private String adminGraphqlApiId;
 
 
@@ -58,7 +57,7 @@ public class ShopifyCustomCollection {
 		return id;
 	}
 
-	public DateTime getPublishedAt() {
+	public Object getPublishedAt() {
 		return publishedAt;
 	}
 
@@ -78,7 +77,7 @@ public class ShopifyCustomCollection {
 		return title;
 	}
 
-	public DateTime getUpdatedAt() {
+	public Object getUpdatedAt() {
 		return updatedAt;
 	}
 
@@ -119,11 +118,11 @@ public class ShopifyCustomCollection {
 		this.templateSuffix = templateSuffix;
 	}
 
-	public void setPublishedAt(DateTime publishedAt) {
+	public void setPublishedAt(Object publishedAt) {
 		this.publishedAt = publishedAt;
 	}
 
-	public void setUpdatedAt(DateTime updatedAt) {
+	public void setUpdatedAt(Object updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

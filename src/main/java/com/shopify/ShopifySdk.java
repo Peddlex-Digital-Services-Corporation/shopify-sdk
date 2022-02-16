@@ -66,6 +66,7 @@ public class ShopifySdk {
 	static final String PRODUCTS = "products";
 	static final String VARIANTS = "variants";
 	static final String CUSTOM_COLLECTIONS = "custom_collections";
+	static final String COLLECTIONS = "collections";
 	static final String RECURRING_APPLICATION_CHARGES = "recurring_application_charges";
 	static final String ORDERS = "orders";
 	static final String FULFILLMENTS = "fulfillments";
@@ -446,6 +447,12 @@ public class ShopifySdk {
 		}
 
 		return shopifyCustomCollections;
+	}
+
+	public ShopifyCustomCollection getCustomCollection(String id) {
+		final Response response = get(getWebTarget().path(COLLECTIONS).path(id + JSON));
+		final ShopifyCollectionRoot shopifyCustomCollectionRoot = response.readEntity(ShopifyCollectionRoot.class);
+		return shopifyCustomCollectionRoot.getCollection();
 	}
 
 	public ShopifyCustomCollection createCustomCollection(
